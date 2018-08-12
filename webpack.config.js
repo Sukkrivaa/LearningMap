@@ -1,7 +1,7 @@
 module.exports = {
 	//Webapack Configuration
 	mode: "development",
-	entry: './app/index.js',
+	entry: './app/index.jsx',
 	output: {
 		filename: "./public/bundle.js"
 	},
@@ -9,7 +9,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(jsx?)$/\,
+				test: /\.(jsx?)$/,
 				exclude: /node_modules/,
 				use: ['babel-loader']
 			},
