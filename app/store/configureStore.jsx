@@ -11,5 +11,7 @@ export var configure = (initialState = {}) => {
 	var store = redux.createStore(reducer, initialState, redux.compose(
 		window.devtoolExtension ? window.devtoolExtension() : f => f
 	));
+
+	return store;
 }
 

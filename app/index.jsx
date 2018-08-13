@@ -1,22 +1,20 @@
-var react = require("react");
-var reactDOM = require("react-dom");
+var React = require("react");
+var ReactDOM = require("react-dom");
 var {Route, Router, IndexRoute, hashHistory} = require("react-router");
 var {Provider} = require("react-redux");
+var App = require("./components/App.jsx")
 
-var Sidebar = require("./components/Sidebar.jsx");
 var actions = require("./actions/actions.jsx");
-var store = require("./store/configureStore").configure();
+var store = require("./store/configureStore.jsx").configure();
 
 store.subscribe(() => {
 	var state = store.getState();
 	console.log(state);
 });
 
-
-
 ReactDOM.render(
-	<Provider store={store}>
-		<Sidebar />
+	<Provider>
+		<App />
 	</Provider>,
 	document.getElementByID("app")
-);
+)

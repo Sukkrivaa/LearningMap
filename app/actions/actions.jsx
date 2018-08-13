@@ -1,22 +1,5 @@
-export var addNumber = (number) => {
+export var addNumber = () => {
 	return {
-		type: "ADD_NUMBER",
-		number: (number + 1)
-	};
-}
-
-export var toggleNumber = (polarity) => {
-	if (polarity = "even"){
-		return {
-			type: "REVERSE_POLARITY",
-			polarity: "odd"
-		}
-	}else if (polaity = "odd") {
-		return {
-			type: "REVERSE_POLARITY",
-			polarity: "even"
-		}
-	}else{
-		console.log("error on polarity");
+		type: "ADD_NUMBER"
 	}
 }
