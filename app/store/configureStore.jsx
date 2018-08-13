@@ -1,15 +1,11 @@
 var redux = require("redux");
 
-var {addNumberReducer, toggleNumberReducer} = require("./../reducers/reducers.jsx");
+var {addNumberReducer} = require("./../reducers/reducers.jsx");
 
-export var configure = (initialState = {}) => {
-	var reducer = redux.combineReducers({
-		number: addNumberReducer,
-		polarity: toggleNumberReducer
-	});
-
+export var configure = (initialState = 0) => {
+	var reducer = addNumberReducer;
 	var store = redux.createStore(reducer, initialState, redux.compose(
-		window.devtoolExtension ? window.devtoolExtension() : f => f
+		window.devToolsExtension ? window.devToolsExtension() : f=>f
 	));
 
 	return store;

@@ -1,7 +1,7 @@
 var React = require("react");
 var actions = require("./../actions/actions.jsx");
 
-export default class App extends React.Component{
+export default class App extends React.Component {
 	onClick(e){
 		e.preventDefault();
 		var dispatch = this.props.bind(this);
@@ -16,3 +16,4 @@ export default class App extends React.Component{
 			)
 	}
 }
+

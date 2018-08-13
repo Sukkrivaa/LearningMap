@@ -3,9 +3,9 @@ module.exports = {
 	mode: "development",
 	entry: './app/index.jsx',
 	output: {
-		filename: "./public/bundle.js"
+		filename: "./bundle.js"
 	},
-	devtool: 'inline-source-map',
+	devtool: 'eval-source-map',
 	module: {
 		rules: [
 			{

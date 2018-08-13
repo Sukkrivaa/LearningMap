@@ -2,7 +2,7 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 var {Route, Router, IndexRoute, hashHistory} = require("react-router");
 var {Provider} = require("react-redux");
-var App = require("./components/App.jsx")
+import App from "./components/App.jsx";
 
 var actions = require("./actions/actions.jsx");
 var store = require("./store/configureStore.jsx").configure();
@@ -12,9 +12,12 @@ store.subscribe(() => {
 	console.log(state);
 });
 
+console.log("Hello");
+console.log(store.getState());
+
 ReactDOM.render(
-	<Provider>
+	<Provider store={store}>
 		<App />
 	</Provider>,
-	document.getElementByID("app")
+	document.getElementById("app")
 )
