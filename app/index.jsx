@@ -12,7 +12,6 @@ store.subscribe(() => {
 	console.log(state);
 });
 
-console.log("Hello");
 console.log(store.getState());
 
 ReactDOM.render(

@@ -10,4 +10,3 @@ export var configure = (initialState = 0) => {
 
 	return store;
 }
-

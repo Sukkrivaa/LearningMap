@@ -1,12 +1,16 @@
 var React = require("react");
-var actions = require("./../actions/actions.jsx");
+import {connect} from "react-redux";
+import {addNumber} from "./../actions/actions.jsx";
 
-export default class App extends React.Component {
+class App extends React.Component {
+	constructor(){
+		super();
+		this.onClick = this.onClick.bind(this);
+	}
 
 	onClick(e){
 		e.preventDefault();
-		var dispatch = this.dispatch;
-		dispatch(actions.addNumber)
+		this.props.dispatch(addNumber());
 	}
 
 	render(){
@@ -17,4 +21,6 @@ export default class App extends React.Component {
 			)
 	}
 }
+
+export default connect()(App);
 
