@@ -3,3 +3,10 @@ export var addNumber = () => {
 		type: "ADD_NUMBER"
 	}
 }
+
+export var updateText = (text) => {
+	return {
+		type: "UPDATE_TEXT",
+		text
+	}
+}
