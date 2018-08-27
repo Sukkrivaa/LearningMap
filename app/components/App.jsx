@@ -21,6 +21,11 @@ class App extends React.Component {
 		console.log(this.props)
 	}
 
+	onAddSubTopic(e){
+		e.preventDefault();
+		this.props.dispatch(addSubtopic("test"));
+	}
+
 	render(){
 		return (
 			<div>

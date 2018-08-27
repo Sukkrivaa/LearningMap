@@ -10,3 +10,10 @@ export var updateText = (text) => {
 		text
 	}
 }
+
+export var addSubtopic = (subtopic) => {
+	return {
+		type: "ADD_SUBTOPIC",
+		subtopic
+	}
+}
