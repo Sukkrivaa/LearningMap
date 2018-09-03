@@ -12,8 +12,6 @@ store.subscribe(() => {
 	console.log(state);
 });
 
-console.log(store.getState());
-
 ReactDOM.render(
 	<Provider store={store}>
 		<App />

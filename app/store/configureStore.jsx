@@ -1,11 +1,10 @@
 var redux = require("redux");
 
-var {addNumberReducer, updateTextReducer, updateSubtopicReducer} = require("./../reducers/reducers.jsx");
+var {updateSubtopicReducer} = require("./../reducers/reducers.jsx");
 
-export var configure = (initialState = {number:0,text:""}) => {
+export var configure = (initialState = {subtopics:[]}) => {
+	//To be implemented once we have more than one reducer
 	var reducer = redux.combineReducers({
-		number: addNumberReducer,
-		text: updateTextReducer,
 		subtopics: updateSubtopicReducer
 	});
 
