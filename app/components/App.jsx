@@ -9,10 +9,8 @@ class App extends Component{
 	constructor(){
 		super();
 		this.onAddSubTopic = this.onAddSubTopic.bind(this);
-		// this.orderSubtopics = this.orderSubtopics.bind(this);
 		this.renderSubtopics = this.renderSubtopics.bind(this);
 		this.onChangeOrder = this.onChangeOrder.bind(this);
-		// this.forceRerender = this.forceRerender.bind(this);
 	}
 
 	onAddSubTopic(e){
@@ -22,19 +20,6 @@ class App extends Component{
 		var timeCreated = moment().unix();
 		this.props.dispatch(addSubtopic(subtopic, order, timeCreated));
 	}
-
-	// orderSubtopics(suptopicsArray){
-	// 	// Need to look at the second property of every index and order the Subtopics
-	// 		return suptopicsArray.sort((a,b) => {
-	// 			let orderVal = a.order-b.order
-	// 			var timeVal = 0;
-	// 			if(orderVal === 0){
-	// 				timeVal = a.unixUpdated - b.unixUpdated;
-	// 			}
-	// 			return orderVal === 0 ? timeVal : orderVal;
-	// 		})
-	//
-	// }
 
 	//Function to be passed down
 	onChangeOrder(text){
@@ -48,8 +33,6 @@ class App extends Component{
 
 	renderSubtopics(){
 		var subtopics = this.props.subtopics
-		//Ordering the Subtopics once the order is set
-		// subtopics = this.orderSubtopics(subtopics); //actually orders the state for you!! - does it by reference
 		//Return the JSX
 		return subtopics.map((subtopic, index) => {
 			return (
