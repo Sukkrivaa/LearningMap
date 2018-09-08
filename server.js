@@ -1,7 +1,7 @@
 var express = require("express");
-
 var app = express();
 const PORT = process.env.PORT || 3000;
+var bodyParser = require("body-parser");
 
 app.use(function(req,res,next){
 	if(req.headers["x-forwarded-proto"] === "https"){
@@ -12,6 +12,9 @@ app.use(function(req,res,next){
 });
 
 app.use(express.static("dist"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+require("./app/api/routesIndex.jsx")(app);
 
 app.listen(PORT, function(){
 	console.log(`Express Server is up on port ${PORT}`);

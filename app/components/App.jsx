@@ -1,6 +1,7 @@
 var React = require("react");
 import {connect} from "react-redux";
 import {addSubtopic, normalizeOrderSubtopic, changeOrderSubtopic} from "./../actions/actions.jsx";
+import {saveSubtopicToMongo} from "./../actions/mongoActions.jsx";
 import Subtopic from "./Subtopic.jsx";
 var moment = require("moment");
 var Component = React.Component;
@@ -19,6 +20,7 @@ class App extends Component{
 		var order = prompt("What is the order?");
 		var timeCreated = moment().unix();
 		this.props.dispatch(addSubtopic(subtopic, order, timeCreated));
+		this.props.dispatch(saveSubtopicToMongo(subtopic, order, timeCreated));
 	}
 
 	//Function to be passed down
