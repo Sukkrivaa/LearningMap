@@ -1,7 +1,7 @@
 var React = require("react");
 import {connect} from "react-redux";
 import {addSubtopic, normalizeOrderSubtopic, changeOrderSubtopic} from "./../actions/actions.jsx";
-import {saveSubtopicToMongo} from "./../actions/mongoActions.jsx";
+import {saveSubtopicToMongo, getInitialSubtopics, changeOrderSubtopicMongoDB} from "./../actions/mongoActions.jsx";
 import Subtopic from "./Subtopic.jsx";
 var moment = require("moment");
 var Component = React.Component;
@@ -20,6 +20,7 @@ class App extends Component{
 		var order = prompt("What is the order?");
 		var timeCreated = moment().unix();
 		this.props.dispatch(addSubtopic(subtopic, order, timeCreated));
+		//Need to send the order which is already manipulated
 		this.props.dispatch(saveSubtopicToMongo(subtopic, order, timeCreated));
 	}
 
@@ -29,8 +30,13 @@ class App extends Component{
 		return function(){
 			var newOrder = prompt("What is the new order of this topic");
 	    //action to change the order of the subtopics - use id once you connect to mongoDB
-	    this.props.dispatch(changeOrderSubtopic(text, newOrder))
+	    this.props.dispatch(changeOrderSubtopic(text, newOrder)) //Not asynchronous
+			this.props.dispatch(changeOrderSubtopicMongoDB(this.props.subtopics)) //Need to set this up so that the manipulated order is sent - is asynchronous
 		}
+	}
+
+	componentWillMount(){
+		this.props.dispatch(getInitialSubtopics());
 	}
 
 	renderSubtopics(){

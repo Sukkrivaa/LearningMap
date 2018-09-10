@@ -14,3 +14,10 @@ export var changeOrderSubtopic = (subtopic, newOrder) => {
 			newOrder
 		}
 }
+
+export var setInitialState = (stateArray) => {
+	return {
+		type: "SET_INITIAL_STATE",
+		stateArray
+	}
+}

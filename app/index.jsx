@@ -10,6 +10,7 @@ var store = require("./store/configureStore.jsx").configure();
 store.subscribe(() => {
 	var state = store.getState();
 	console.log(state);
+	//Update MongoDB here
 });
 
 ReactDOM.render(
