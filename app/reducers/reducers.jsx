@@ -18,7 +18,6 @@ export var updateSubtopicReducer = (state = [], action) =>{
 			newState[index]["unixUpdated"] = moment().unix();
 			return subtopicSort(newState);
 		case "SET_INITIAL_STATE":
-			// return subtopicSort(action.stateArray); Need a way to sort them according to order
 			action.stateArray.sort((a,b) => {
 				return a.order - b.order;
 			})

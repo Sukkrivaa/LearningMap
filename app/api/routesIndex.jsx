@@ -1,10 +1,8 @@
-const MongoMethods = require("./dbs/mongodb.js");
+const MongoMethods = require("./dbs/MongoDBRoutes.js");
 
 const Index = (app) => {
-  //Check if the routing is correct
-  app.post("/api/saveSubtopicToMongo", MongoMethods.saveSubtopicToMongo);
-  app.post("/api/getInitialSubtopics", MongoMethods.getInitialSubtopics);
-  app.post("/api/changeOrderSubtopic", MongoMethods.changeOrderSubtopic);
+  app.get("/api/getInitialSubtopics", MongoMethods.getInitialSubtopics);
+  app.post("/api/updateMongoOnSubtopics", MongoMethods.updateMongoOnSubtopics);
 }
 
 module.exports = Index;
