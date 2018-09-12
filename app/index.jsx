@@ -2,7 +2,7 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 var {Route, Router, IndexRoute, hashHistory} = require("react-router");
 var {Provider} = require("react-redux");
-import SubtopicList from "./components/SubtopicList.jsx";
+import SubtopicList from "./components/subtopics/SubtopicList.jsx";
 
 var actions = require("./actions/actions.jsx");
 var store = require("./store/configureStore.jsx").configure();

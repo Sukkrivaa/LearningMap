@@ -1,10 +1,11 @@
 var React = require("react");
 import {connect} from "react-redux";
-import {addSubtopic, normalizeOrderSubtopic, changeOrderSubtopic} from "./../actions/actions.jsx";
-import { getInitialSubtopics, updateMongoOnSubtopics} from "./../actions/mongoActions.jsx";
+import {addSubtopic, normalizeOrderSubtopic, changeOrderSubtopic} from "./../../actions/actions.jsx";
+import { getInitialSubtopics, updateMongoOnSubtopics} from "./../../actions/mongoActions.jsx";
 import Subtopic from "./Subtopic.jsx";
 var moment = require("moment");
 var Component = React.Component;
+//add the map stateToProps and mapDispatchtoProps
 
 class SubtopicList extends Component{
 	constructor(){
