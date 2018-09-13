@@ -1,6 +1,6 @@
 var React = require("react");
 import {connect} from "react-redux";
-var Component = React.Component
+var Component = React.Component;
 import {changeOrderSubtopic} from "./../../actions/actions.jsx"
 
 export class Subtopic extends Component {
