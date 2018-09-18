@@ -19,7 +19,7 @@ module.exports = {
 				}]
 			},
 			{
-				test: /\.css$/,
+				test: /\.scss$/,
 				use: [{
 					loader: "style-loader"
 				},
@@ -30,7 +30,10 @@ module.exports = {
 						camelCase: true,
 						sourceMap: true
 					}
-				}]
+				},
+			{
+				loader:"sass-loader"
+			}]
 			}
 		]
 	}

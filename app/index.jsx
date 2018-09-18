@@ -2,8 +2,8 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 var {Route, Router, IndexRoute, hashHistory} = require("react-router");
 var {Provider} = require("react-redux");
-import SubtopicList from "./components/subtopics/SubtopicList.jsx";
-import QuillEditor from "./components/Editor/QuillEditor.jsx";
+import MainContainer from "./components/MainContainer.jsx";
+// import QuillEditor from "./components/Editor/QuillEditor.jssx";
 var actions = require("./actions/actions.jsx");
 var store = require("./store/configureStore.jsx").configure();
 
@@ -12,14 +12,13 @@ store.subscribe(() => {
 	console.log(state); //Keep this in for debugging purposes
 });
 
-import 'react-quill/dist/quill.snow.css';
+import 'style-loader!css-loader!./../node_modules/react-quill/dist/quill.snow.css'; //Do this for stylesheets that you don't create
+
+// import "./styles/base.scss"; //This worked for your own files //Don't really need to bother with this now
 
 ReactDOM.render(
 	<Provider store={store}>
-		<div>
-		<SubtopicList />
-		<QuillEditor />
-	</div>
+		<MainContainer />
 	</Provider>,
 	document.getElementById("app")
 )
