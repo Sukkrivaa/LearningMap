@@ -21,3 +21,10 @@ export var setInitialState = (stateArray) => {
 		stateArray
 	}
 }
+
+export var changeActive = (activeSubtopic) => {
+	return {
+		type: "CHANGE_ACTIVE",
+		activeSubtopic
+	}
+}

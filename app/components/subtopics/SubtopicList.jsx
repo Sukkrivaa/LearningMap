@@ -1,6 +1,6 @@
 var React = require("react");
 import {connect} from "react-redux";
-import {addSubtopic, normalizeOrderSubtopic, changeOrderSubtopic} from "./../../actions/actions.jsx";
+import {addSubtopic, normalizeOrderSubtopic, changeOrderSubtopic, changeActive} from "./../../actions/actions.jsx";
 import { getInitialSubtopics, updateMongoOnSubtopics} from "./../../actions/mongoActions.jsx";
 import Subtopic from "./Subtopic.jsx";
 var moment = require("moment");
@@ -31,9 +31,15 @@ class SubtopicList extends Component{
 		}
 	}
 
+	handleSubtopicClick(text){
+		//action to change the active state
+		return function(){
+			this.props.dispatch(changeActive(text));
+		}
+	}
+
 	componentDidUpdate(){
 		this.props.dispatch(updateMongoOnSubtopics(this.props.subtopics));
-
 	}
 
 	componentWillMount(){
@@ -44,7 +50,7 @@ class SubtopicList extends Component{
 		var subtopics = this.props.subtopics
 		return subtopics.map((subtopic, index) => {
 			return (
-				<Subtopic text={subtopic.subtopic} key={Math.random()} onChangeOrder={this.onChangeOrder(subtopic.subtopic)}/>
+				<Subtopic text={subtopic.subtopic} key={Math.random()} onChangeOrder={this.onChangeOrder(subtopic.subtopic)} handleSubtopicClick={this.handleSubtopicClick(subtopic.subtopic)}/>
 			)
 		})
 	}

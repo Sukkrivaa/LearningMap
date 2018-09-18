@@ -12,6 +12,5 @@ module.exports = function(array){
   for(var i = 0; i <arrayOfSubtopics.length; i++){
     arrayOfSubtopics[i].order = (i+1)
   }
-
   return arrayOfSubtopics;
 }

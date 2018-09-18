@@ -11,7 +11,6 @@ export function getInitialSubtopics(){
 
 export function updateMongoOnSubtopics(updatedSubtopics){
   return (dispatch, getState) => {
-    console.log("updateMongoOnSubtopics is running");
     axios.post("/api/updateMongoOnSubtopics", {updatedSubtopics}).then(() => {
       console.log("updateMongoOnSubtopics api ran without problems")
     }).catch((e) => {

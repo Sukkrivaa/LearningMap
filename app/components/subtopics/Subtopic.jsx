@@ -8,12 +8,14 @@ export class Subtopic extends Component {
     super();
     this.text = props.text;
     this.onChangeOrder = props.onChangeOrder.bind(this);
+    this.handleClick = props.handleSubtopicClick.bind(this);
   }
+
 
   render(){
     return (
       <div>
-        <h3>{this.text}</h3>
+        <h3 onClick={this.handleClick}>{this.text}</h3>
         <button onClick={this.onChangeOrder}>Click here to change order of this subtopic</button>
       </div>
     )

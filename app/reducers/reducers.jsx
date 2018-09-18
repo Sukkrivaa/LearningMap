@@ -1,7 +1,7 @@
 var moment = require("moment");
 var subtopicSort = require("./../api/logic/subtopicsSort");
 
-export var updateSubtopicReducer = (state = [], action) =>{
+export var updateSubtopicReducer = (state = [], action) => {
 	switch (action.type){
 		case "ADD_SUBTOPIC":
 			var arrayOfSubtopics = [...state, {subtopic: action.subtopic, order: parseInt(action.order), unixUpdated: action.timeCreated}];
@@ -24,5 +24,14 @@ export var updateSubtopicReducer = (state = [], action) =>{
 			return action.stateArray;
 		default:
 			return state;
+	}
+}
+
+export var updateActiveReducer = (state = "", action) => {
+	switch (action.type) {
+		case "CHANGE_ACTIVE":
+			return action.activeSubtopic;
+		default:
+			return state; 
 	}
 }

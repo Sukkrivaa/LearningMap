@@ -3,7 +3,6 @@ var ReactDOM = require("react-dom");
 var {Route, Router, IndexRoute, hashHistory} = require("react-router");
 var {Provider} = require("react-redux");
 import MainContainer from "./components/MainContainer.jsx";
-// import QuillEditor from "./components/Editor/QuillEditor.jssx";
 var actions = require("./actions/actions.jsx");
 var store = require("./store/configureStore.jsx").configure();
 

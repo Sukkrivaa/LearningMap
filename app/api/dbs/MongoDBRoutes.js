@@ -11,6 +11,7 @@ module.exports = {
   },
   updateMongoOnSubtopics: (req,res) => {
     const {updatedSubtopics} = req.body;
+    console.log("this is the updatedSubtopics on the server", updatedSubtopics);
     MongoPromise.updateMongoOnSubtopics(updatedSubtopics).then(() => {res.send("Successful Change on MongoDB")}).catch((e) => {console.log("Error when upserting Subtopics after the api call: ",e)});
   }
 }
