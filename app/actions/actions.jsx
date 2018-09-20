@@ -28,3 +28,10 @@ export var changeActive = (activeSubtopic) => {
 		activeSubtopic
 	}
 }
+
+export var setMasterContent = (content) => {
+	return {
+		type: "SET_MASTER_CONTENT",
+		content
+	}
+}

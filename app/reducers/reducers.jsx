@@ -39,3 +39,12 @@ export var updateActiveReducer = (state = "", action) => {
 			return state;
 	}
 }
+
+export var updateMasterContent = (state = "", action) => {
+	switch (action.type) {
+		case "SET_MASTER_CONTENT":
+			return action.content
+		default:
+			return state;
+	}
+}

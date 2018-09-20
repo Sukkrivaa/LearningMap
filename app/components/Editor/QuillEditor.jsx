@@ -6,15 +6,16 @@ import SaveButton from "./SaveButton.jsx"
 
 class QuillEditor extends Component {
   //need to set it such that the state changes when the actiev part changes
-  
+
   constructor(props){
     super(props);
-    this.state = { text: this.props.defaultValue } // You can also pass a Quill Delta here
     this.handleChange = this.handleChange.bind(this)
   }
-
+s
   handleChange(value,delta,source,editor) {
-    this.setState({ text: editor.getContents() }) //need to do it this way becuase the delta only returns changes
+    // this.setState({ text: editor.getContents() }) //need to do it this way becuase the delta only returns changes //need this later
+
+    //Change the master content this way
   }
 
   renderQuillInitial(){
@@ -25,8 +26,7 @@ class QuillEditor extends Component {
       <ReactQuill
         modules={QuillEditor.modules}
         formats={QuillEditor.formats}
-        defaultValue={deltaValue}
-        onChange={this.handleChange}
+        value={deltaValue} //defaultValue doesnt allow changes!!
        />
     )
   }
@@ -35,6 +35,7 @@ class QuillEditor extends Component {
     return (
       <div>
         {this.renderQuillInitial()}
+        {this.props.active}
          <SaveButton />
       </div>
     )
@@ -65,4 +66,4 @@ QuillEditor.formats = [
   'link', 'image', 'video'
 ]
 
-export default connect(state => state)(QuillEditor);
+export default connect(state => {return {active: state.active, subtopics: state.subtopics}})(QuillEditor);
