@@ -4,7 +4,11 @@ var subtopicSort = require("./../api/logic/subtopicsSort");
 export var updateSubtopicReducer = (state = [], action) => {
 	switch (action.type){
 		case "ADD_SUBTOPIC":
-			var arrayOfSubtopics = [...state, {subtopic: action.subtopic, order: parseInt(action.order), unixUpdated: action.timeCreated}];
+			var arrayOfSubtopics = [...state, {subtopic: action.subtopic, order: parseInt(action.order), unixUpdated: action.timeCreated, content: {
+				ops: [
+					{ insert: 'White', attributes: { color: '#abc' } }
+				]
+			}}];
 			return subtopicSort(arrayOfSubtopics);
 		case "CHANGE_ORDER_SUBTOPIC":
 			var newState = [...state];
@@ -32,6 +36,6 @@ export var updateActiveReducer = (state = "", action) => {
 		case "CHANGE_ACTIVE":
 			return action.activeSubtopic;
 		default:
-			return state; 
+			return state;
 	}
 }
