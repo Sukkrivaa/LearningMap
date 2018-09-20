@@ -29,9 +29,10 @@ export var changeActive = (activeSubtopic) => {
 	}
 }
 
-export var setMasterContent = (content) => {
+export var changeSubtopicContent = (content, activeSubtopic) => {
 	return {
-		type: "SET_MASTER_CONTENT",
-		content
+		type: "CHANGE_SUBTOPIC_CONTENT",
+		content,
+		activeSubtopic
 	}
 }

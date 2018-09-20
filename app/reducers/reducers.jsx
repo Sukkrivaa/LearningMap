@@ -6,7 +6,7 @@ export var updateSubtopicReducer = (state = [], action) => {
 		case "ADD_SUBTOPIC":
 			var arrayOfSubtopics = [...state, {subtopic: action.subtopic, order: parseInt(action.order), unixUpdated: action.timeCreated, content: {
 				ops: [
-					{ insert: 'White', attributes: { color: '#abc' } }
+					{ insert: 'PlaceholderText', attributes: { color: '#abc' } }
 				]
 			}}];
 			return subtopicSort(arrayOfSubtopics);
@@ -26,6 +26,15 @@ export var updateSubtopicReducer = (state = [], action) => {
 				return a.order - b.order;
 			})
 			return action.stateArray;
+		case "CHANGE_SUBTOPIC_CONTENT":
+			var arrayOfSubtopics = [...state];
+			arrayOfSubtopics.forEach((obj) => {
+				if(obj.subtopic == action.activeSubtopic){
+					obj.contents = action.content
+				}
+			})
+			console.log(arrayOfSubtopics);
+			return arrayOfSubtopics;
 		default:
 			return state;
 	}
@@ -35,15 +44,6 @@ export var updateActiveReducer = (state = "", action) => {
 	switch (action.type) {
 		case "CHANGE_ACTIVE":
 			return action.activeSubtopic;
-		default:
-			return state;
-	}
-}
-
-export var updateMasterContent = (state = "", action) => {
-	switch (action.type) {
-		case "SET_MASTER_CONTENT":
-			return action.content
 		default:
 			return state;
 	}

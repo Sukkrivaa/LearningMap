@@ -6,8 +6,7 @@ var {updateSubtopicReducer, updateActiveReducer, updateMasterContent} = require(
 export var configure = (initialState = {subtopics:[]}) => {
 	var reducer = redux.combineReducers({
 		subtopics: updateSubtopicReducer,
-		active: updateActiveReducer,
-		masterContent: updateMasterContent
+		active: updateActiveReducer
 	});
 
 	var store = redux.createStore(reducer, initialState,redux.applyMiddleware(thunk), redux.compose(
