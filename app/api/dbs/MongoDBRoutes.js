@@ -16,7 +16,6 @@ module.exports = {
   deleteMongoSubtopic: (req, res) => {
     const {subtopic} = req.body;
     MongoPromise.deleteMongoSubtopic(subtopic).then(() => {
-      console.log("this ran on MongoDBRoutes");
       res.send("Successful deletion on MongoDB")
     }).catch((e) => {console.log("Error when deleting on MongoDB: ", e)});
   }

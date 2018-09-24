@@ -35,10 +35,10 @@ const MongoPromise = {
   deleteMongoSubtopic: (subtopicToBeDeleted) => {
     return new Promise((resolve, reject) => {
       Subtopic.remove({"subtopic": subtopicToBeDeleted}).then((res) => {
-        console.log(res);
         resolve(res);
       }).catch((e) => {
         console.log("Something went wrong here: ")
+        reject(e);
       })
 
     })
