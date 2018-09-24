@@ -30,6 +30,12 @@ export var updateSubtopicReducer = (state = [], action) => {
 				}
 			})
 			return arrayOfSubtopics;
+		case "DELETE_SUBTOPIC":
+			var newState=[...state];
+			var filteredArray = newState.filter((obj)=>{
+				return obj.subtopic !== action.subtopic
+			});
+			return filteredArray;
 		default:
 			return state;
 	}

@@ -36,3 +36,10 @@ export var changeSubtopicContent = (content, activeSubtopic) => {
 		activeSubtopic
 	}
 }
+
+export var deleteSubtopic = (subtopic) => {
+	return {
+		type: "DELETE_SUBTOPIC",
+		subtopic
+	}
+}

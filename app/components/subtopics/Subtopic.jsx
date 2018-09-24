@@ -9,6 +9,7 @@ export class Subtopic extends Component {
     this.text = props.text;
     this.onChangeOrder = props.onChangeOrder.bind(this);
     this.handleClick = props.handleSubtopicClick.bind(this);
+    this.handleDeleteSubtopic = props.handleDeleteSubtopic.bind(this)
   }
 
 
@@ -17,6 +18,7 @@ export class Subtopic extends Component {
       <div>
         <h3 onClick={this.handleClick}>{this.text}</h3>
         <button onClick={this.onChangeOrder}>Click here to change order of this subtopic</button>
+        <button onClick={this.handleDeleteSubtopic}>Click here to delete the subtopic</button>
       </div>
     )
   }

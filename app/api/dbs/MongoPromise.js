@@ -8,6 +8,7 @@ const MongoPromise = {
         resolve(result);
       }).catch(() => {
         console.log("error here when trying to find initial subtopics");
+        reject();
       })
     })
   },
@@ -29,6 +30,17 @@ const MongoPromise = {
       }else{
         reject("something went wrong");
       }
+    })
+  },
+  deleteMongoSubtopic: (subtopicToBeDeleted) => {
+    return new Promise((resolve, reject) => {
+      Subtopic.remove({"subtopic": subtopicToBeDeleted}).then((res) => {
+        console.log(res);
+        resolve(res);
+      }).catch((e) => {
+        console.log("Something went wrong here: ")
+      })
+
     })
   }
 }

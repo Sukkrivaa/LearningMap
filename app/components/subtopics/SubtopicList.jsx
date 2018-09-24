@@ -1,7 +1,7 @@
 var React = require("react");
 import {connect} from "react-redux";
-import {addSubtopic, normalizeOrderSubtopic, changeOrderSubtopic, changeActive} from "./../../actions/actions.jsx";
-import { getInitialSubtopics, updateMongoOnSubtopics} from "./../../actions/mongoActions.jsx";
+import {addSubtopic, normalizeOrderSubtopic, changeOrderSubtopic, changeActive, deleteSubtopic} from "./../../actions/actions.jsx";
+import { getInitialSubtopics, updateMongoOnSubtopics, deleteMongoSubtopic} from "./../../actions/mongoActions.jsx";
 import Subtopic from "./Subtopic.jsx";
 var moment = require("moment");
 var Component = React.Component;
@@ -24,10 +24,20 @@ class SubtopicList extends Component{
 	}
 
 	//Function to be passed down
-	onChangeOrder(text){
+	onChangeOrder(subtopic){
 		return function(){
 			var newOrder = prompt("What is the new order of this topic");
-	    this.props.dispatch(changeOrderSubtopic(text, newOrder)) //Not asynchronous
+	    this.props.dispatch(changeOrderSubtopic(subtopic, newOrder)) //Not asynchronous
+		}
+	}
+
+	handleDeleteSubtopic(subtopic){
+		return function(){
+			if(confirm("Are you sure you want to delete this subtopic? All contents will not be recoverable.")){
+				this.props.dispatch(deleteSubtopic(subtopic));
+				this.props.dispatch(changeActive(""));
+				this.props.dispatch(deleteMongoSubtopic(subtopic));
+			}
 		}
 	}
 
@@ -39,7 +49,8 @@ class SubtopicList extends Component{
 	}
 
 	componentDidUpdate(){
-		//Runs everytime the DOM is updated - even if nothing here is updated - Which is why when quill's content is updated this runs
+		//Runs everytime the DOM is updated - even if nothing here is updated - Which is why when quill's content is updated this runs - everytime the this.props.subtopics is added;
+		//However, this does not work if something is deleted because when comparing states to the mongodb, mongoose does not update if the array element is not there in the first place. That is why need a separate async action to delete stuff from the database.
 		this.props.dispatch(updateMongoOnSubtopics(this.props.subtopics));
 	}
 
@@ -51,7 +62,8 @@ class SubtopicList extends Component{
 		var subtopics = this.props.subtopics
 		return subtopics.map((subtopic, index) => {
 			return (
-				<Subtopic text={subtopic.subtopic} key={Math.random()} onChangeOrder={this.onChangeOrder(subtopic.subtopic)} handleSubtopicClick={this.handleSubtopicClick(subtopic.subtopic)}/>
+				<Subtopic text={subtopic.subtopic} key={Math.random()} onChangeOrder={this.onChangeOrder(subtopic.subtopic)} handleSubtopicClick={this.handleSubtopicClick(subtopic.subtopic)}
+				handleDeleteSubtopic={this.handleDeleteSubtopic(subtopic.subtopic)}/>
 			)
 		})
 	}

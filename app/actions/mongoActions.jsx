@@ -28,3 +28,13 @@ export function getContentBasedOnSubtopic(activeSubtopic){ //Need to set this up
     })
   }
 }
+
+export function deleteMongoSubtopic(subtopic){
+  return (dispatch, getState) => {
+    axios.post("/api/deleteMongoSubtopic", {subtopic}).then(()=>{
+      console.log("deleteMongoSubtopic ran without problems");
+    }).catch((e) => {
+      console.log("Error found on deleteMongoSubtopic: ", e)
+    })
+  }
+}
