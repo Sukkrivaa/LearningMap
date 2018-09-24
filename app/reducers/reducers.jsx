@@ -4,7 +4,7 @@ var subtopicSort = require("./../api/logic/subtopicsSort");
 export var updateSubtopicReducer = (state = [], action) => {
 	switch (action.type){
 		case "ADD_SUBTOPIC":
-			var arrayOfSubtopics = [...state, {subtopic: action.subtopic, order: parseInt(action.order), unixUpdated: action.timeCreated, content: "{ops: [{ insert: 'PlaceholderText', attributes: { color: '#abc' } }]}"}];
+			var arrayOfSubtopics = [...state, {subtopic: action.subtopic, order: parseInt(action.order), unixUpdated: action.timeCreated, content: JSON.stringify({ops: [{ insert: 'Placeholder Text', attributes: { color: '#abc' } }]})}]; //Have to use JSON.stringify because putting quotes does not make it JSON
 			return subtopicSort(arrayOfSubtopics);
 		case "CHANGE_ORDER_SUBTOPIC":
 			var newState = [...state];

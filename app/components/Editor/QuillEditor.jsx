@@ -31,7 +31,6 @@ class QuillEditor extends Component {
     var deltaValue = this.props.subtopics.filter(obj => {
       return obj.subtopic == this.props.active
     })[0].content
-    deltaValue = deltaValue ? deltaValue : "PlaceholderText";
     return (
       <ReactQuill
         modules={QuillEditor.modules}
