@@ -4,11 +4,7 @@ var subtopicSort = require("./../api/logic/subtopicsSort");
 export var updateSubtopicReducer = (state = [], action) => {
 	switch (action.type){
 		case "ADD_SUBTOPIC":
-			var arrayOfSubtopics = [...state, {subtopic: action.subtopic, order: parseInt(action.order), unixUpdated: action.timeCreated, content: {
-				ops: [
-					{ insert: 'PlaceholderText', attributes: { color: '#abc' } }
-				]
-			}}];
+			var arrayOfSubtopics = [...state, {subtopic: action.subtopic, order: parseInt(action.order), unixUpdated: action.timeCreated, content: "{ops: [{ insert: 'PlaceholderText', attributes: { color: '#abc' } }]}"}];
 			return subtopicSort(arrayOfSubtopics);
 		case "CHANGE_ORDER_SUBTOPIC":
 			var newState = [...state];
@@ -30,10 +26,9 @@ export var updateSubtopicReducer = (state = [], action) => {
 			var arrayOfSubtopics = [...state];
 			arrayOfSubtopics.forEach((obj) => {
 				if(obj.subtopic == action.activeSubtopic){
-					obj.contents = action.content
+					obj.content = JSON.stringify(action.content);
 				}
 			})
-			console.log(arrayOfSubtopics);
 			return arrayOfSubtopics;
 		default:
 			return state;

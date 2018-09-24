@@ -2,8 +2,8 @@ var React = require("react");
 import {connect} from "react-redux";
 var Component = React.Component;
 import ReactQuill from 'react-quill';
-import SaveButton from "./SaveButton.jsx"
-import {changeSubtopicContent} from "./../../actions/actions.jsx"
+import SaveButton from "./SaveButton.jsx";
+import {changeSubtopicContent} from "./../../actions/actions.jsx";
 
 class QuillEditor extends Component {
   //need to set it such that the state changes when the actiev part changes
@@ -18,9 +18,7 @@ class QuillEditor extends Component {
 
   handleChange(arrayOfChanges) {
     return function(){
-      console.log("this is running");
       var a = arrayOfChanges[arrayOfChanges.length - 1]
-      console.log(JSON.stringify(arrayOfChanges[arrayOfChanges.length - 1]));
       this.props.dispatch(changeSubtopicContent(a, this.props.active));
     }
   }
@@ -32,12 +30,13 @@ class QuillEditor extends Component {
   renderQuillInitial(){
     var deltaValue = this.props.subtopics.filter(obj => {
       return obj.subtopic == this.props.active
-    })[0].contents;
+    })[0].content
+    deltaValue = deltaValue ? deltaValue : "PlaceholderText";
     return (
       <ReactQuill
         modules={QuillEditor.modules}
         formats={QuillEditor.formats}
-        value={deltaValue} //defaultValue doesnt allow changes!!
+        value={JSON.parse(deltaValue)} //defaultValue doesnt allow changes!!
         onChange={this.handleQuillChange}
        />
     )

@@ -39,6 +39,7 @@ class SubtopicList extends Component{
 	}
 
 	componentDidUpdate(){
+		//Runs everytime the DOM is updated - even if nothing here is updated - Which is why when quill's content is updated this runs
 		this.props.dispatch(updateMongoOnSubtopics(this.props.subtopics));
 	}
 

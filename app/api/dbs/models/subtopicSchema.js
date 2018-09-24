@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 const SubtopicSchema = new Schema({
 	subtopic: String,
 	order: Number,
-  unixUpdated: Number
+  unixUpdated: Number,
+	content: String
 });
 
 const Subtopic = mongoose.model("subtopic", SubtopicSchema);

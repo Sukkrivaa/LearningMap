@@ -13,3 +13,5 @@ To be done next
 //Need to warn them that any unsaved changes will be lost when clicking on a new subtopic
 
 //Need to save the all the content every time they click save - all the way to mongodb - already did the local verison
+
+//Need to play with Schemas to update objects - see if you can turn into a string - need to change how we add subtopics too!!

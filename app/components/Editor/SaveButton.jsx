@@ -5,7 +5,6 @@ var Component = React.Component;
 class SaveButton extends Component {
   constructor(props){
     super(props);
-    console.log(props);
     this.onClickFunction = props.onClickfunction.bind(this);
   }
 

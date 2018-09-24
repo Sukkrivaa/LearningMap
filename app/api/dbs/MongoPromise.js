@@ -18,7 +18,7 @@ const MongoPromise = {
     return new Promise((resolve, reject) => {
       for (var i = 0; i < updatedSubtopicsMongo.length; i++) {
         (function(j){
-          Subtopic.findOneAndUpdate({subtopic: updatedSubtopicsMongo[j].subtopic}, {order: updatedSubtopicsMongo[j].order, unixUpdated:updatedSubtopicsMongo[j].unixUpdated}, {upsert: true}).then(() => {
+          Subtopic.findOneAndUpdate({subtopic: updatedSubtopicsMongo[j].subtopic}, {order: updatedSubtopicsMongo[j].order, unixUpdated:updatedSubtopicsMongo[j].unixUpdated, content: updatedSubtopicsMongo[j].content}, {upsert: true}).then(() => {
             console.log("updatedMongo");
           });
           count++
