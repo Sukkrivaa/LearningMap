@@ -19,16 +19,6 @@ export function updateMongoOnSubtopics(updatedSubtopics){
   }
 }
 
-export function getContentBasedOnSubtopic(activeSubtopic){ //Need to set this up!!
-  return (dispatch, getState) => {
-    axios.post("/api/getContentBasedOnSubtopic", {activeSubtopic}).then((res)=>{
-      dispatch(setInitialDelta(res))
-    }).catch((e) => {
-      console.log("Something went wrong", e);
-    })
-  }
-}
-
 export function deleteMongoSubtopic(subtopic){
   return (dispatch, getState) => {
     axios.post("/api/deleteMongoSubtopic", {subtopic}).then(()=>{
