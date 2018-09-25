@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 
 const proposedChangesSchema = new Schema({
     proposedNewDelta: String,
-    explanation: String
+    explanation: String,
+    subtopic: String
 })
 
 const ProposedChange = mongoose.model("proposedChanges", proposedChangesSchema);

@@ -29,7 +29,7 @@ class QuillEditor extends Component {
     return function(){
       var explanation = prompt("Brief Description of the change")
       var recentChange = arrayOfChanges[arrayOfChanges.length - 1]
-      this.props.dispatch(pushChangesMongo(recentChange, explanation));
+      this.props.dispatch(pushChangesMongo(recentChange, explanation, this.props.active));
     }
   }
 

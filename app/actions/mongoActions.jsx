@@ -29,12 +29,12 @@ export function deleteMongoSubtopic(subtopic){
   }
 }
 
-export function pushChangesMongo(recentChange, explanation){
+export function pushChangesMongo(recentChange, explanation, activeSubtopic){
   return (dispatch, getState) => {
     var recentChangeString = JSON.stringify(recentChange);
     var activeSubtopic = getState().active
     dispatch(changeSubtopicContent(recentChange, activeSubtopic));
-    axios.post("/api/pushChangesMongo", {recentChangeString, explanation}).then(() => {
+    axios.post("/api/pushChangesMongo", {recentChangeString, explanation, activeSubtopic}).then(() => {
       console.log("pushChangesMongo ran without problems");
     }).catch((e) => {
       console.log("Error found on pushChangesMongo: ", e)

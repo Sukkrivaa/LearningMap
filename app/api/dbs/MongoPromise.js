@@ -45,11 +45,12 @@ const MongoPromise = {
 
     })
   },
-  pushChangesMongo: (recentChangeString, explanation) => {
+  pushChangesMongo: (recentChangeString, explanation, activeSubtopic) => {
     return new Promise((resolve, reject) => {
 
       var change = new ProposedChange({
         proposedNewDelta: recentChangeString,
+        subtopic: activeSubtopic,
         explanation
       })
 

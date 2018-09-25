@@ -20,8 +20,8 @@ module.exports = {
     }).catch((e) => {console.log("Error when deleting on MongoDB: ", e)});
   },
   pushChangesMongo: (req, res) => {
-    const {recentChangeString, explanation} = req.body;
-    MongoPromise.pushChangesMongo(recentChangeString, explanation).then(()=>{
+    const {recentChangeString, explanation, activeSubtopic} = req.body;
+    MongoPromise.pushChangesMongo(recentChangeString, explanation, activeSubtopic).then(()=>{
       res.send("Successful push onto Proposed Changes");
     }).catch((e) => {
       console.log("Error When pushing change: ", e)

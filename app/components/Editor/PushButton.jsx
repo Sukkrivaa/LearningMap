@@ -10,7 +10,7 @@ class PushButton extends Component {
 
   render(){
     return (
-      <button onClick={this.onClickFunction}>Push</button>
+      <button onClick={this.onClickFunction}>Save and Push</button>
     )
   }
 
