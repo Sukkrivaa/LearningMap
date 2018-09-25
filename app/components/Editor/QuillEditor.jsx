@@ -3,7 +3,9 @@ import {connect} from "react-redux";
 var Component = React.Component;
 import ReactQuill from 'react-quill';
 import SaveButton from "./SaveButton.jsx";
+import PushButton from "./PushButton.jsx";
 import {changeSubtopicContent} from "./../../actions/actions.jsx";
+import {pushChangesMongo} from "./../../actions/mongoActions.jsx";
 
 class QuillEditor extends Component {
   //need to set it such that the state changes when the actiev part changes
@@ -11,15 +13,23 @@ class QuillEditor extends Component {
   constructor(props){
     super(props);
     this.arrayOfChanges = [];
-    this.state = {content: ""}
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
     this.handleQuillChange = this.handleQuillChange.bind(this);
+    this.handlePush = this.handlePush.bind(this);
   }
 
   handleChange(arrayOfChanges) {
     return function(){
-      var a = arrayOfChanges[arrayOfChanges.length - 1]
-      this.props.dispatch(changeSubtopicContent(a, this.props.active));
+      var recentChange = arrayOfChanges[arrayOfChanges.length - 1]
+      this.props.dispatch(changeSubtopicContent(recentChange, this.props.active));
+    }
+  }
+
+  handlePush(arrayOfChanges) {
+    return function(){
+      var explanation = prompt("Brief Description of the change")
+      var recentChange = arrayOfChanges[arrayOfChanges.length - 1]
+      this.props.dispatch(pushChangesMongo(recentChange, explanation));
     }
   }
 
@@ -46,7 +56,8 @@ class QuillEditor extends Component {
       <div>
         <h2>{this.props.active}</h2>
         {this.renderQuillInitial()}
-         <SaveButton onClickfunction={this.handleChange(this.arrayOfChanges)}/>
+         <SaveButton onClickFunction={this.handleChange(this.arrayOfChanges)}/>
+         <PushButton onClickFunction={this.handlePush(this.arrayOfChanges)}/>
       </div>
     )
   }

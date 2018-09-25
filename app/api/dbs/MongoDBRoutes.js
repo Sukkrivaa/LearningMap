@@ -16,7 +16,15 @@ module.exports = {
   deleteMongoSubtopic: (req, res) => {
     const {subtopic} = req.body;
     MongoPromise.deleteMongoSubtopic(subtopic).then(() => {
-      res.send("Successful deletion on MongoDB")
+      res.send("Successful deletion on MongoDB");
     }).catch((e) => {console.log("Error when deleting on MongoDB: ", e)});
+  },
+  pushChangesMongo: (req, res) => {
+    const {recentChangeString, explanation} = req.body;
+    MongoPromise.pushChangesMongo(recentChangeString, explanation).then(()=>{
+      res.send("Successful push onto Proposed Changes");
+    }).catch((e) => {
+      console.log("Error When pushing change: ", e)
+    })
   }
 }

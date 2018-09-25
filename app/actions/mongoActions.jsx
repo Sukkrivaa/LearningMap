@@ -1,5 +1,5 @@
 import axios from "axios";
-import {setInitialState} from "./actions.jsx";
+import {setInitialState, changeSubtopicContent} from "./actions.jsx";
 
 export function getInitialSubtopics(){
   return (dispatch, getState) => {
@@ -25,6 +25,19 @@ export function deleteMongoSubtopic(subtopic){
       console.log("deleteMongoSubtopic ran without problems");
     }).catch((e) => {
       console.log("Error found on deleteMongoSubtopic: ", e)
+    })
+  }
+}
+
+export function pushChangesMongo(recentChange, explanation){
+  return (dispatch, getState) => {
+    var recentChangeString = JSON.stringify(recentChange);
+    var activeSubtopic = getState().active
+    dispatch(changeSubtopicContent(recentChange, activeSubtopic));
+    axios.post("/api/pushChangesMongo", {recentChangeString, explanation}).then(() => {
+      console.log("pushChangesMongo ran without problems");
+    }).catch((e) => {
+      console.log("Error found on pushChangesMongo: ", e)
     })
   }
 }

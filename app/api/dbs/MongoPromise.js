@@ -1,5 +1,7 @@
 const db = require("./Connection.js"); //might need this in the future
 const Subtopic = require("./models/subtopicSchema");
+const ProposedChange = require("./models/proposedChangesSchema");
+
 const MongoPromise = {
   getInitialSubtopics: () => {
     return new Promise((resolve,reject) => {
@@ -36,11 +38,26 @@ const MongoPromise = {
     return new Promise((resolve, reject) => {
       Subtopic.remove({"subtopic": subtopicToBeDeleted}).then((res) => {
         resolve(res);
-      }).catch((e) => {
-        console.log("Something went wrong here: ")
-        reject(e);
+      }).catch(() => {
+        console.log("Something went wrong here")
+        reject();
       })
 
+    })
+  },
+  pushChangesMongo: (recentChangeString, explanation) => {
+    return new Promise((resolve, reject) => {
+
+      var change = new ProposedChange({
+        proposedNewDelta: recentChangeString,
+        explanation
+      })
+
+      change.save().then((res) => {
+        resolve(res);
+      }).catch((e) => {
+        console.log("something went wrong on pushChangesMongo: ", e)
+      })
     })
   }
 }
