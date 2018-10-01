@@ -1,5 +1,5 @@
 var moment = require("moment");
-var subtopicSort = require("./../api/logic/subtopicsSort");
+var subtopicSort = require("./../../api/logic/subtopicsSort");
 
 export var updateSubtopicReducer = (state = [], action) => {
 	switch (action.type){

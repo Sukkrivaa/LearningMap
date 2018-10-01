@@ -15,7 +15,7 @@ app.use(express.static("dist"));
 //require(pageRoutes)(app);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-require("./app/api/routesIndex.jsx")(app);
+require("./api/routesIndex.jsx")(app);
 
 app.listen(PORT, function(){
 	console.log(`Express Server is up on port ${PORT}`);
