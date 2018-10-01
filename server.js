@@ -12,6 +12,7 @@ app.use(function(req,res,next){
 });
 
 app.use(express.static("dist"));
+//require(pageRoutes)(app);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 require("./app/api/routesIndex.jsx")(app);
