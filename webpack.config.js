@@ -3,7 +3,8 @@ module.exports = {
 	mode: "development",
 	entry: './app/index.jsx',
 	output: {
-		filename: "./bundle.js"
+		filename: "./bundle.js",
+		publicPath:"/",
 	},
 	devtool: 'eval-source-map',
 	module: {
