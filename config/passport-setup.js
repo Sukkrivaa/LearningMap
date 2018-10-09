@@ -16,7 +16,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
   clientID: keys.google.clientID,
   clientSecret: keys.google.clientSecret,
-  callbackURL: "/auth/google/redirect"
+  callbackURL: require("./magicStrings").Routes.authRoutesString.googleStrategyRoutesString.googleAuthCodeDecryption
 }, (accessToken, refreshToken, profile, done) => {
   User.findOne({googleID: profile.id}).then((res) => {
     if(res){

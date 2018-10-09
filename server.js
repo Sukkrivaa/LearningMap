@@ -6,8 +6,6 @@ var keys = require("./config/keys");
 var cookieSession = require("cookie-session");
 var passport = require("passport")
 
-// app.set("view-engine", "ejs")
-
 app.use(function(req,res,next){
 	if(req.headers["x-forwarded-proto"] === "https"){
 		res.redirect("http://" + req.hostname + req.url);

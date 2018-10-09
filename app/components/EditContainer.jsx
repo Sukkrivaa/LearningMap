@@ -1,8 +1,7 @@
 var React = require("react");
 var Component = React.Component;
 import {connect} from "react-redux";
-
-
+const authRoutesString = require("./../../config/magicStrings").Routes.authRoutesString
 import SubtopicList from "./subtopics/SubtopicList.jsx";
 import QuillEditor from "./Editor/QuillEditor.jsx";
 
@@ -20,9 +19,9 @@ class EditContainer extends Component {
     if(bool){
       return (
         <div>
-          <a href="/auth/google"> Google Sign in</a>
+          <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Google Sign in</a>
           <br />
-          <a href="/auth/logout">Google Sign Out</a>
+          <a href={authRoutesString.generalRoutesString.logout}>Google Sign Out</a>
           <SubtopicList />
           <QuillEditor />
         </div>
@@ -32,9 +31,9 @@ class EditContainer extends Component {
     }else{
       return (
         <div>
-          <a href="/auth/google"> Google Sign in</a>
+          <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Google Sign in</a>
           <br />
-          <a href="/auth/logout">Google Sign Out</a>
+          <a href={authRoutesString.generalRoutesString.logout}>Google Sign Out</a>
           <SubtopicList />
         </div>
       )

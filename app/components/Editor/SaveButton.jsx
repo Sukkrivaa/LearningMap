@@ -5,12 +5,12 @@ var Component = React.Component;
 class SaveButton extends Component {
   constructor(props){
     super(props);
-    this.onClickFunction = props.onClickFunction.bind(this);
+    this.handleClickFunction = props.handleClickFunction.bind(this);
   }
 
   render(){
     return (
-      <button onClick={this.onClickFunction}>Save</button>
+      <button onClick={this.handleClickFunction}>Save</button>
     )
   }
 

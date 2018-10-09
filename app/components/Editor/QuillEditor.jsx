@@ -56,8 +56,8 @@ class QuillEditor extends Component {
       <div>
         <h2>{this.props.active}</h2>
         {this.renderQuillInitial()}
-         <SaveButton onClickFunction={this.handleChange(this.arrayOfChanges)}/>
-         <PushButton onClickFunction={this.handlePush(this.arrayOfChanges)}/>
+         <SaveButton handleClickFunction={this.handleChange(this.arrayOfChanges)}/>
+         <PushButton handleClickFunction={this.handlePush(this.arrayOfChanges)}/>
       </div>
     )
   }

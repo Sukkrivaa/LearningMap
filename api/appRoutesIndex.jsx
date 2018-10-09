@@ -1,10 +1,11 @@
 const MongoMethods = require("./dbs/MongoDBRoutes.js");
+const mongoRoutesString = require("./../config/magicStrings").Routes.apiRoutesString.mongoRoutesString;
 
 const Index = (app) => {
-  app.get("/api/getInitialSubtopics", MongoMethods.getInitialSubtopics);
-  app.post("/api/updateMongoOnSubtopics", MongoMethods.updateMongoOnSubtopics);
-  app.post("/api/deleteMongoSubtopic", MongoMethods.deleteMongoSubtopic);
-  app.post("/api/pushChangesMongo", MongoMethods.pushChangesMongo);
+  app.get(mongoRoutesString.getInitialSubtopics, MongoMethods.getInitialSubtopics);
+  app.post(mongoRoutesString.updateMongoOnSubtopics, MongoMethods.updateMongoOnSubtopics);
+  app.post(mongoRoutesString.deleteMongoSubtopic, MongoMethods.deleteMongoSubtopic);
+  app.post(mongoRoutesString.pushChangesMongo, MongoMethods.pushChangesMongo);
 }
 
 module.exports = Index;

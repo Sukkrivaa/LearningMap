@@ -10,12 +10,12 @@ var Component = React.Component;
 class SubtopicList extends Component{
 	constructor(){
 		super();
-		this.onAddSubTopic = this.onAddSubTopic.bind(this);
+		this.handleAddSubTopic = this.handleAddSubTopic.bind(this);
 		this.renderSubtopics = this.renderSubtopics.bind(this);
-		this.onChangeOrder = this.onChangeOrder.bind(this);
+		this.handleChangeOrder = this.handleChangeOrder.bind(this);
 	}
 
-	onAddSubTopic(e){
+	handleAddSubTopic(e){
 		e.preventDefault();
 		var subtopic = prompt("What is the Subtopic?");
 		var order = prompt("What is the order?");
@@ -24,7 +24,7 @@ class SubtopicList extends Component{
 	}
 
 	//Function to be passed down
-	onChangeOrder(subtopic){
+	handleChangeOrder(subtopic){
 		return function(){
 			var newOrder = prompt("What is the new order of this topic");
 	    this.props.dispatch(changeOrderSubtopic(subtopic, newOrder)) //Not asynchronous
@@ -62,7 +62,7 @@ class SubtopicList extends Component{
 		var subtopics = this.props.subtopics
 		return subtopics.map((subtopic, index) => {
 			return (
-				<Subtopic text={subtopic.subtopic} key={Math.random()} onChangeOrder={this.onChangeOrder(subtopic.subtopic)} handleSubtopicClick={this.handleSubtopicClick(subtopic.subtopic)}
+				<Subtopic text={subtopic.subtopic} key={Math.random()} handleChangeOrder={this.handleChangeOrder(subtopic.subtopic)} handleSubtopicClick={this.handleSubtopicClick(subtopic.subtopic)}
 				handleDeleteSubtopic={this.handleDeleteSubtopic(subtopic.subtopic)}/>
 			)
 		})
@@ -71,7 +71,7 @@ class SubtopicList extends Component{
 	render(){
 		return (
 			<div>
-				<button onClick={this.onAddSubTopic}>Click me to add a subtopic</button>
+				<button onClick={this.handleAddSubTopic}>Click me to add a subtopic</button>
 				<div>
 					{this.renderSubtopics()}
 				</div>

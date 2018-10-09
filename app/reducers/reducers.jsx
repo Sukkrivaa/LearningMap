@@ -1,12 +1,13 @@
 var moment = require("moment");
 var subtopicSort = require("./../../api/logic/subtopicsSort");
+const actionStrings = require("./../../config/magicStrings.js").actionStrings;
 
 export var updateSubtopicReducer = (state = [], action) => {
 	switch (action.type){
-		case "ADD_SUBTOPIC":
+		case actionStrings.SubtopicListActions.ADD_SUBTOPIC:
 			var arrayOfSubtopics = [...state, {subtopic: action.subtopic, order: parseInt(action.order), unixUpdated: action.timeCreated, content: JSON.stringify({ops: [{ insert: 'Placeholder Text', attributes: { color: '#abc' } }]})}]; //Have to use JSON.stringify because putting quotes does not make it JSON
 			return subtopicSort(arrayOfSubtopics);
-		case "CHANGE_ORDER_SUBTOPIC":
+		case actionStrings.SubtopicListActions.CHANGE_ORDER_SUBTOPIC:
 			var newState = [...state];
 			var index = newState.findIndex(subtopic => subtopic.subtopic === action.subtopic);
 			var oldOrder = newState[index]["order"];
@@ -17,12 +18,12 @@ export var updateSubtopicReducer = (state = [], action) => {
 			}
 			newState[index]["unixUpdated"] = moment().unix();
 			return subtopicSort(newState);
-		case "SET_INITIAL_STATE":
+		case actionStrings.SubtopicListActions.SET_INITIAL_STATE:
 			action.stateArray.sort((a,b) => {
 				return a.order - b.order;
 			})
 			return action.stateArray;
-		case "CHANGE_SUBTOPIC_CONTENT":
+		case actionStrings.SubtopicListActions.CHANGE_SUBTOPIC_CONTENT:
 			var arrayOfSubtopics = [...state];
 			arrayOfSubtopics.forEach((obj) => {
 				if(obj.subtopic == action.activeSubtopic){
@@ -30,7 +31,7 @@ export var updateSubtopicReducer = (state = [], action) => {
 				}
 			})
 			return arrayOfSubtopics;
-		case "DELETE_SUBTOPIC":
+		case actionStrings.SubtopicListActions.DELETE_SUBTOPIC:
 			var newState=[...state];
 			var filteredArray = newState.filter((obj)=>{
 				return obj.subtopic !== action.subtopic
@@ -43,7 +44,7 @@ export var updateSubtopicReducer = (state = [], action) => {
 
 export var updateActiveReducer = (state = "", action) => {
 	switch (action.type) {
-		case "CHANGE_ACTIVE":
+		case actionStrings.activeStateActions.CHANGE_ACTIVE:
 			return action.activeSubtopic;
 		default:
 			return state;

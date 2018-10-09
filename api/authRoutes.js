@@ -1,21 +1,23 @@
 const passport = require("passport");
+const authRoutesString = require("./../config/magicStrings").Routes.authRoutesString;
+
 
 module.exports = (app) => {
-  app.get("/auth/google", passport.authenticate("google", {
+  app.get(authRoutesString.googleStrategyRoutesString.googleAuthInitial, passport.authenticate("google", {
     scope: ["profile"]
   }));
 
-  app.get("/auth/google/redirect", passport.authenticate("google"), (req,res)=>{
+  app.get(authRoutesString.googleStrategyRoutesString.googleAuthCodeDecryption, passport.authenticate("google"), (req,res)=>{
     console.log(req.user);
     res.redirect("/");
   })
 
 
-  app.get("/getCookieValue", (req,res) => {
+  app.get(authRoutesString.generalRoutesString.getCookieValue, (req,res) => {
     res.send(req.user);
   })
 
-  app.get("/auth/logout", (req, res) => {
+  app.get(authRoutesString.generalRoutesString.logout, (req, res) => {
     req.logout();
     res.redirect("/");
   });
