@@ -12,15 +12,16 @@ class EditContainer extends Component {
     this.renderEditorwithActiveContent = this.renderEditorwithActiveContent.bind(this);
   }
 
-  //Render the editor only if the active state is not ""
+
 
   renderEditorwithActiveContent(){
+    //Render the editor only if the active state is not ""
     var bool = this.props.active !== "";
     if(bool){
       return (
         <div>
           <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Google Sign in</a>
-          <br />
+          <br /> {/*Put this in the navigation bar*/}
           <a href={authRoutesString.generalRoutesString.logout}>Google Sign Out</a>
           <SubtopicList />
           <QuillEditor />
