@@ -8,7 +8,7 @@ import QuillEditor from "./Editor/QuillEditor.jsx";
 class EditContainer extends Component {
   constructor(props){
     super(props);
-    console.log(props);
+    // console.log(props);
     this.renderEditorwithActiveContent = this.renderEditorwithActiveContent.bind(this);
   }
 
@@ -20,9 +20,9 @@ class EditContainer extends Component {
     if(bool){
       return (
         <div>
-          <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Google Sign in</a>
-          <br /> {/*Put this in the navigation bar*/}
-          <a href={authRoutesString.generalRoutesString.logout}>Google Sign Out</a>
+        {/* //   <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Google Sign in</a>
+        //   <br /> {/*Put this in the navigation bar*/}
+        {/* //   <a href={authRoutesString.generalRoutesString.logout}>Google Sign Out</a> */} */}
           <SubtopicList />
           <QuillEditor />
         </div>
@@ -32,9 +32,9 @@ class EditContainer extends Component {
     }else{
       return (
         <div>
-          <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Google Sign in</a>
+          {/* <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Google Sign in</a>
           <br />
-          <a href={authRoutesString.generalRoutesString.logout}>Google Sign Out</a>
+          <a href={authRoutesString.generalRoutesString.logout}>Google Sign Out</a> */}
           <SubtopicList />
         </div>
       )

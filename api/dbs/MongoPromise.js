@@ -11,8 +11,8 @@ const MongoPromise = {
       }).catch(() => {
         console.log("error here when trying to find initial subtopics");
         reject();
-      })
-    })
+      });
+    });
   },
   updateMongoOnSubtopics: (updatedSubtopics) => {
     var updatedSubtopicsMongo = [...updatedSubtopics];
@@ -24,26 +24,26 @@ const MongoPromise = {
           Subtopic.findOneAndUpdate({subtopic: updatedSubtopicsMongo[j].subtopic}, {order: updatedSubtopicsMongo[j].order, unixUpdated:updatedSubtopicsMongo[j].unixUpdated, content: updatedSubtopicsMongo[j].content}, {upsert: true}).then(() => {
             console.log("updatedMongo");
           });
-          count++
-        }(i)) //Always use iifes when creating execution contexts in loops
+          count++;
+        }(i)); //Always use iifes when creating execution contexts in loops
       }
       if(count === updatedSubtopicsMongo.length){
-        resolve()
+        resolve();
       }else{
         reject("something went wrong");
       }
-    })
+    });
   },
   deleteMongoSubtopic: (subtopicToBeDeleted) => {
     return new Promise((resolve, reject) => {
       Subtopic.remove({"subtopic": subtopicToBeDeleted}).then((res) => {
         resolve(res);
       }).catch(() => {
-        console.log("Something went wrong here")
+        console.log("Something went wrong here");
         reject();
-      })
+      });
 
-    })
+    });
   },
   pushChangesMongo: (recentChangeString, explanation, activeSubtopic) => {
     return new Promise((resolve, reject) => {
@@ -52,15 +52,16 @@ const MongoPromise = {
         proposedNewDelta: recentChangeString,
         subtopic: activeSubtopic,
         explanation
-      })
+      });
 
       change.save().then((res) => {
         resolve(res);
       }).catch((e) => {
-        console.log("something went wrong on pushChangesMongo: ", e)
-      })
-    })
+        console.log("something went wrong on pushChangesMongo: ", e);
+        reject(e);
+      });
+    });
   }
-}
+};
 
 module.exports = MongoPromise;

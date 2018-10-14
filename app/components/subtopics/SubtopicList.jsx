@@ -27,8 +27,8 @@ class SubtopicList extends Component{
 	handleChangeOrder(subtopic){
 		return function(){
 			var newOrder = prompt("What is the new order of this topic");
-	    this.props.dispatch(changeOrderSubtopic(subtopic, newOrder)) //Not asynchronous
-		}
+	    this.props.dispatch(changeOrderSubtopic(subtopic, newOrder)); //Not asynchronous
+		};
 	}
 
 	handleDeleteSubtopic(subtopic){
@@ -38,14 +38,14 @@ class SubtopicList extends Component{
 				this.props.dispatch(changeActive(""));
 				this.props.dispatch(deleteMongoSubtopic(subtopic));
 			}
-		}
+		};
 	}
 
 	handleSubtopicClick(text){
 		//action to change the active state
 		return function(){
 			this.props.dispatch(changeActive(text));
-		}
+		};
 	}
 
 	componentDidUpdate(){
@@ -59,13 +59,13 @@ class SubtopicList extends Component{
 	}
 
 	renderSubtopics(){
-		var subtopics = this.props.subtopics
+		var subtopics = this.props.subtopics;
 		return subtopics.map((subtopic, index) => {
 			return (
 				<Subtopic text={subtopic.subtopic} key={Math.random()} handleChangeOrder={this.handleChangeOrder(subtopic.subtopic)} handleSubtopicClick={this.handleSubtopicClick(subtopic.subtopic)}
 				handleDeleteSubtopic={this.handleDeleteSubtopic(subtopic.subtopic)}/>
-			)
-		})
+			);
+		});
 	}
 
 	render(){
@@ -76,8 +76,8 @@ class SubtopicList extends Component{
 					{this.renderSubtopics()}
 				</div>
 			</div>
-			)
+			);
 	}
 }
 
-export default connect((state) => {return {subtopics:state.subtopics}})(SubtopicList);
+export default connect((state) => {return {subtopics:state.subtopics};})(SubtopicList);

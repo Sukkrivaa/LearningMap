@@ -1,12 +1,12 @@
 module.exports = {
 	//Webapack Configuration
 	mode: "development",
-	entry: './app/index.jsx',
+	entry: "./app/index.jsx",
 	output: {
 		filename: "./bundle.js",
 		publicPath:"/",
 	},
-	devtool: 'eval-source-map',
+	devtool: "eval-source-map",
 	module: {
 		rules: [
 			{
@@ -32,9 +32,9 @@ module.exports = {
 						sourceMap: true
 					}
 				},
-			{
-				loader:"sass-loader"
-			}]
+				{
+					loader:"sass-loader"
+				}]
 			}
 		]
 	}

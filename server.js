@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3000;
 var bodyParser = require("body-parser");
 var keys = require("./config/keys");
 var cookieSession = require("cookie-session");
-var passport = require("passport")
+var passport = require("passport");
 
 app.use(function(req,res,next){
 	if(req.headers["x-forwarded-proto"] === "https"){
@@ -18,9 +18,9 @@ app.use(function(req,res,next){
 require("./config/passport-setup");
 
 app.use(cookieSession({
-  maxAge: 60*24*60*1000,
-  keys: [keys.session.cookieKey]
-}))
+	maxAge: 60*24*60*1000,
+	keys: [keys.session.cookieKey]
+}));
 
 
 app.use(passport.initialize());

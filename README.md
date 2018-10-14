@@ -9,3 +9,5 @@ SANITIZE ALL INPUT FROM THE USER
 All console.logs are to be removed in production
 
 All prompts are to be replaced with modals during styling
+
+FIX STUFF WITH ESLINT ONLY AFTER YOU WRITE ALL THE TESTS!!!! - need to make sure your debugging does not break anything

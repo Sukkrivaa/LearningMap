@@ -6,6 +6,6 @@ const Index = (app) => {
   app.post(mongoRoutesString.updateMongoOnSubtopics, MongoMethods.updateMongoOnSubtopics);
   app.post(mongoRoutesString.deleteMongoSubtopic, MongoMethods.deleteMongoSubtopic);
   app.post(mongoRoutesString.pushChangesMongo, MongoMethods.pushChangesMongo);
-}
+};
 
 module.exports = Index;

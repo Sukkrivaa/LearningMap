@@ -11,7 +11,7 @@ class PushButton extends Component {
   render(){
     return (
       <button onClick={this.handleClickFunction}>Save and Push</button>
-    )
+    );
   }
 
 }

@@ -7,7 +7,7 @@ var actions = require("./actions/actions.jsx");
 var store = require("./store/configureStore.jsx").configure();
 var axios = require("axios");
 var getCookieValue = require("./../config/magicStrings").Routes.authRoutesString.generalRoutesString.getCookieValue
-
+import NavigationBar from "./components/NavigationBar/index.jsx";
 
 store.subscribe(() => {
 	var state = store.getState();
@@ -22,11 +22,14 @@ import 'style-loader!css-loader!./../node_modules/react-quill/dist/quill.snow.cs
 axios.get(getCookieValue).then((res) => {
 	ReactDOM.render(
 		<Provider store={store}>
-			<BrowserRouter>
-				<div>
-					<Route exact path="/" render={(props) => <EditContainer {...props} cookieData={res.data}/>}/>
-				</div>
-			</BrowserRouter>
+			<div>
+				<NavigationBar cookieData={res.data}/>
+				<BrowserRouter>
+					<div>
+						<Route exact path="/" render={(props) => <EditContainer {...props} cookieData={res.data}/>}/>
+					</div>
+				</BrowserRouter>
+			</div>
 		</Provider>,
 		document.getElementById("app")
 	)

@@ -1,7 +1,7 @@
 var React = require("react");
 import {connect} from "react-redux";
 var Component = React.Component;
-import {changeOrderSubtopic} from "./../../actions/actions.jsx"
+import {changeOrderSubtopic} from "./../../actions/actions.jsx";
 
 export class Subtopic extends Component {
   constructor(props){
@@ -9,7 +9,7 @@ export class Subtopic extends Component {
     this.text = props.text;
     this.handleChangeOrder = props.handleChangeOrder.bind(this);
     this.handleClick = props.handleSubtopicClick.bind(this);
-    this.handleDeleteSubtopic = props.handleDeleteSubtopic.bind(this)
+    this.handleDeleteSubtopic = props.handleDeleteSubtopic.bind(this);
   }
 
 
@@ -20,8 +20,8 @@ export class Subtopic extends Component {
         <button onClick={this.handleChangeOrder}>Click here to change order of this subtopic</button>
         <button onClick={this.handleDeleteSubtopic}>Click here to delete the subtopic</button>
       </div>
-    )
+    );
   }
 }
 
-export default connect((state) => {return state})(Subtopic)
+export default connect((state) => {return state;})(Subtopic);
