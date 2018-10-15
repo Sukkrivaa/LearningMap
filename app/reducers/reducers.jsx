@@ -42,11 +42,20 @@ export var updateSubtopicReducer = (state = [], action) => {
 	}
 }
 
-export var updateActiveReducer = (state = "", action) => {
+export var updateActiveSubtopicReducer = (state = "", action) => {
 	switch (action.type) {
-		case actionStrings.activeStateActions.CHANGE_ACTIVE:
+		case actionStrings.activeStateActions.CHANGE_ACTIVE_SUBTOPIC:
 			return action.activeSubtopic;
 		default:
 			return state;
+	}
+}
+
+export var updateActiveSubjectReducer = (state = "", action) => {
+	switch (action.type) {
+		case actionStrings.activeSubjectActions.CHANGE_ACTIVE_SUBJECT:
+			return action.activeSubject
+		default:
+			return state
 	}
 }

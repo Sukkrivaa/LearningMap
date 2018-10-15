@@ -11,7 +11,10 @@ module.exports = {
       DELETE_SUBTOPIC: "DELETE_SUBTOPIC"
     },
     activeStateActions: {
-      CHANGE_ACTIVE: "CHANGE_ACTIVE"
+      CHANGE_ACTIVE_SUBTOPIC: "CHANGE_ACTIVE_SUBTOPIC"
+    },
+    activeSubjectActions: {
+      CHANGE_ACTIVE_SUBJECT: "CHANGE_ACTIVE_SUBJECT"
     }
   },
   Routes: {

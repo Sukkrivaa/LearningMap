@@ -21,7 +21,7 @@ class QuillEditor extends Component {
   handleChange(arrayOfChanges) {
     return function(){
       var recentChange = arrayOfChanges[arrayOfChanges.length - 1];
-      this.props.dispatch(changeSubtopicContent(recentChange, this.props.active));
+      this.props.dispatch(changeSubtopicContent(recentChange, this.props.activeSubtopic));
     };
   }
 
@@ -29,7 +29,7 @@ class QuillEditor extends Component {
     return function(){
       var explanation = prompt("Brief Description of the change");
       var recentChange = arrayOfChanges[arrayOfChanges.length - 1];
-      this.props.dispatch(pushChangesMongo(recentChange, explanation, this.props.active));
+      this.props.dispatch(pushChangesMongo(recentChange, explanation, this.props.activeSubtopic));
     };
   }
 
@@ -39,7 +39,7 @@ class QuillEditor extends Component {
 
   renderQuillInitial(){
     var deltaValue = this.props.subtopics.filter(obj => {
-      return obj.subtopic == this.props.active;
+      return obj.subtopic == this.props.activeSubtopic;
     })[0].content;
     return (
       <ReactQuill
@@ -54,7 +54,7 @@ class QuillEditor extends Component {
   render(){
     return (
       <div>
-        <h2>{this.props.active}</h2>
+        <h2>{this.props.activeSubtopic}</h2>
         {this.renderQuillInitial()}
          <SaveButton handleClickFunction={this.handleChange(this.arrayOfChanges)}/>
          <PushButton handleClickFunction={this.handlePush(this.arrayOfChanges)}/>
@@ -87,4 +87,4 @@ QuillEditor.formats = [
   "link", "image", "video"
 ];
 
-export default connect(state => {return {active: state.active, subtopics: state.subtopics};})(QuillEditor);
+export default connect(state => {return {activeSubtopic: state.activeSubtopic, subtopics: state.subtopics};})(QuillEditor);

@@ -16,13 +16,10 @@ class EditContainer extends Component {
 
   renderEditorwithActiveContent(){
     //Render the editor only if the active state is not ""
-    var bool = this.props.active !== "";
+    var bool = this.props.activeSubtopic !== "";
     if(bool){
       return (
         <div>
-        {/* //   <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Google Sign in</a>
-        //   <br /> {/*Put this in the navigation bar*/}
-        {/* //   <a href={authRoutesString.generalRoutesString.logout}>Google Sign Out</a> */} */}
           <SubtopicList />
           <QuillEditor />
         </div>
@@ -32,9 +29,6 @@ class EditContainer extends Component {
     }else{
       return (
         <div>
-          {/* <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Google Sign in</a>
-          <br />
-          <a href={authRoutesString.generalRoutesString.logout}>Google Sign Out</a> */}
           <SubtopicList />
         </div>
       )

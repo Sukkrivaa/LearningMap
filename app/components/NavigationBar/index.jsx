@@ -15,13 +15,16 @@ class NavigationBar extends Component {
     var loggedInBool = this.cookieData instanceof Object
 
     if(loggedInBool){
-      return (<a href={authRoutesString.generalRoutesString.logout}>Google Sign Out</a>)
+      return (
+        <div>
+          <a href={authRoutesString.generalRoutesString.logout}>Sign out</a>
+        </div>)
       //return logout
       //return profile
       //return edit based on subject page - which we get directly from the store
     }else{
       return (
-        <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Google Sign in</a>
+        <a href={authRoutesString.googleStrategyRoutesString.googleAuthInitial}> Sign in to edit and vote</a>
       )
       //return login to edit and vote
       //based on subject page with we get from store outside the if-statement

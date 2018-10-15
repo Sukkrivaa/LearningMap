@@ -24,9 +24,9 @@ export var setInitialState = (stateArray) => {
 	};
 };
 
-export var changeActive = (activeSubtopic) => {
+export var changeActiveSubtopic = (activeSubtopic) => {
 	return {
-		type: actionStrings.activeStateActions.CHANGE_ACTIVE,
+		type: actionStrings.activeStateActions.CHANGE_ACTIVE_SUBTOPIC,
 		activeSubtopic
 	};
 };
@@ -45,3 +45,10 @@ export var deleteSubtopic = (subtopic) => {
 		subtopic
 	};
 };
+
+export var changeActiveSubject = (activeSubject) => {
+	return {
+		type: actionStrings.activeSubjectActions.CHANGE_ACTIVE_SUBJECT,
+		activeSubject
+	}
+}

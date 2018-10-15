@@ -1,12 +1,13 @@
 var React = require("react");
 import {connect} from "react-redux";
-import {addSubtopic, normalizeOrderSubtopic, changeOrderSubtopic, changeActive, deleteSubtopic} from "./../../actions/actions.jsx";
+import {addSubtopic, normalizeOrderSubtopic, changeOrderSubtopic, changeActiveSubtopic, deleteSubtopic} from "./../../actions/actions.jsx";
 import { getInitialSubtopics, updateMongoOnSubtopics, deleteMongoSubtopic} from "./../../actions/mongoActions.jsx";
 import Subtopic from "./Subtopic.jsx";
 var moment = require("moment");
 var Component = React.Component;
 //add the map stateToProps and mapDispatchtoProps
 
+//After writing tests, change this to extend the non-editable version which will be used as a high order component
 class SubtopicList extends Component{
 	constructor(){
 		super();
@@ -35,7 +36,7 @@ class SubtopicList extends Component{
 		return function(){
 			if(confirm("Are you sure you want to delete this subtopic? All contents will not be recoverable.")){
 				this.props.dispatch(deleteSubtopic(subtopic));
-				this.props.dispatch(changeActive(""));
+				this.props.dispatch(changeActiveSubtopic(""));
 				this.props.dispatch(deleteMongoSubtopic(subtopic));
 			}
 		};
@@ -44,7 +45,7 @@ class SubtopicList extends Component{
 	handleSubtopicClick(text){
 		//action to change the active state
 		return function(){
-			this.props.dispatch(changeActive(text));
+			this.props.dispatch(changeActiveSubtopic(text));
 		};
 	}
 
