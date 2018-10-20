@@ -52,3 +52,9 @@ export var changeActiveSubject = (activeSubject) => {
 		activeSubject
 	}
 }
+
+export var toggleSubjectEditing = () => {
+	return {
+		type: actionStrings.activeSubjectActions.TOGGLE_EDITING
+	}
+}

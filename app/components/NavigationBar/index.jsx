@@ -2,6 +2,7 @@ var React = require("react");
 var Component = React.Component;
 import {connect} from "react-redux";
 const authRoutesString = require("./../../../config/magicStrings").Routes.authRoutesString
+var {Link} = require("react-router-dom");
 
 class NavigationBar extends Component {
   constructor(props){
@@ -13,12 +14,24 @@ class NavigationBar extends Component {
 
   renderBasedOnPageAndLoggedInStatus(){
     var loggedInBool = this.cookieData instanceof Object
-
+    var editingBool = this.props.editing;
+    console.log(editingBool);
     if(loggedInBool){
-      return (
-        <div>
-          <a href={authRoutesString.generalRoutesString.logout}>Sign out</a>
-        </div>)
+      if(editingBool){
+        return (
+          <div>
+            <a href={authRoutesString.generalRoutesString.logout}>Sign out</a>
+            <Link to="/profile"><p>Profile</p></Link>
+            <Link to="/NoEdit"><p>Stop Editing</p></Link>
+          </div>)
+      }else{
+        return (
+          <div>
+            <a href={authRoutesString.generalRoutesString.logout}>Sign out</a>
+            <Link to="/profile"><p>Profile</p></Link>
+            <Link to="/edit"><p>Edit</p></Link>
+          </div>)
+      }
       //return logout
       //return profile
       //return edit based on subject page - which we get directly from the store

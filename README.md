@@ -6,6 +6,9 @@ SANITIZE ALL INPUT FROM THE USER
 //Need to warn them that any unsaved changes will be lost when clicking on a new subtopic - change this to periodic saving in the future
 
 
+//Install karma and mocha
+
+
 All console.logs are to be removed in production
 
 All prompts are to be replaced with modals during styling
@@ -23,3 +26,14 @@ You need to change the subtopics everytime the subject changes
 start with just comp sci first and test out all the possible problems
   comp science is fairly active
   The different subjects can be the different languages and topics
+
+install and configure prettier
+
+install and integrate gulp or grunt
+
+use travis CI so that you can see builds immediately instead of pushing onto heroku all the time.
+
+install quokka.js
+
+In v2, add spectrum so that people can make teams and collaborate
+  - Instead of doing this yourself, get your team to do it. Get funding for this (Peter thiel fellowship if possible after first semester at NUS)

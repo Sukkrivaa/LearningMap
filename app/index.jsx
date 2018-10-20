@@ -20,20 +20,23 @@ import 'style-loader!css-loader!./../node_modules/react-quill/dist/quill.snow.cs
 // import "./styles/base.scss"; //This worked for your own files //Don't really need to bother with this now
 function renderRoutesJSXOfSubjects(){
 	//Render the JSX from the database and add a prop where we get the linkRoute
-	return <Route exact path="/physics" component={() => <h1>Hello</h1>}/>
+	return <Route exact path="/physics" component = {() => <h1>Physics</h1>} />
 }
 
 axios.get(getCookieValue).then((res) => {
 	ReactDOM.render(
 		<Provider store={store}>
 			<div>
-				<NavigationBar cookieData={res.data}/>
+
 				<BrowserRouter>
-					<Switch>
-						<Route exact path="/" component={HomePageComponent} />
-						<Route exact path="/edit" render={(props) => <EditContainer {...props} cookieData={res.data}/>}/>
-						{renderRoutesJSXOfSubjects()};
-					</Switch>
+					<div>
+						<NavigationBar cookieData={res.data}/>
+						<Switch>
+							<Route exact path="/" component={HomePageComponent} />
+							<Route exact path="/edit" render={(props) => <EditContainer {...props} cookieData={res.data}/>}/>
+							{renderRoutesJSXOfSubjects()};
+						</Switch>
+					</div>
 				</BrowserRouter>
 			</div>
 		</Provider>,

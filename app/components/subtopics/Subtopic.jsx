@@ -12,6 +12,8 @@ export class Subtopic extends Component {
     this.handleDeleteSubtopic = props.handleDeleteSubtopic.bind(this);
   }
 
+  
+
 
   render(){
     return (

@@ -51,11 +51,21 @@ export var updateActiveSubtopicReducer = (state = "", action) => {
 	}
 }
 
-export var updateActiveSubjectReducer = (state = "", action) => {
+export var updateActiveSubjectReducer = (state = "Physics", action) => {
 	switch (action.type) {
 		case actionStrings.activeSubjectActions.CHANGE_ACTIVE_SUBJECT:
 			return action.activeSubject
 		default:
 			return state
+	}
+}
+
+
+export var toggleEditingReducer = (state = "false", action) => {
+	switch (action.type){
+		case actionStrings.activeSubjectActions.CHANGE_ACTIVE_SUBJECT:
+			return !state;
+		default:
+			return state;
 	}
 }

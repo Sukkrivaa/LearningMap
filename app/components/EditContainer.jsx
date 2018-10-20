@@ -16,8 +16,10 @@ class EditContainer extends Component {
 
   renderEditorwithActiveContent(){
     //Render the editor only if the active state is not ""
-    var bool = this.props.activeSubtopic !== "";
-    if(bool){
+    var activeBool = this.props.activeSubtopic !== "";
+    //Add a case where editing is active then return quill editor else return non-editable container
+    var editingBool = this.props.editing
+    if(activeBool && editingBool){
       return (
         <div>
           <SubtopicList />
@@ -26,7 +28,14 @@ class EditContainer extends Component {
 
     )
 
-    }else{
+  } else if (activeBool && !editingBool){
+    return (
+      <div>
+        <SubtopicList />
+        <h1>Sample text</h1>
+      </div>
+    )
+  } else{
       return (
         <div>
           <SubtopicList />
