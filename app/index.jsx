@@ -32,8 +32,8 @@ axios.get(getCookieValue).then((res) => {
 					<div>
 						<NavigationBar cookieData={res.data}/>
 						<Switch>
-							<Route exact path="/" component={HomePageComponent} />
-							<Route exact path="/edit" render={(props) => <EditContainer {...props} cookieData={res.data}/>}/>
+							<Route exact path="/test" component={HomePageComponent} />
+							<Route exact path="/" render={(props) => <EditContainer {...props} cookieData={res.data}/>}/>
 							{renderRoutesJSXOfSubjects()};
 						</Switch>
 					</div>
